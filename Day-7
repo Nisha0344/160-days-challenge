@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <unordered_map>
+
+using namespace std;
+
+bool areAnagrams(string s1, string s2) {
+    // If lengths are not equal, they cannot be anagrams
+    if (s1.length() != s2.length()) {
+        return false;
+    }
+    
+    // Create frequency maps for both strings
+    unordered_map<char, int> freq1, freq2;
+    
+    for (char c : s1) {
+        freq1[c]++;
+    }
+    for (char c : s2) {
+        freq2[c]++;
+    }
+    
+    // Compare the frequency maps
+    return freq1 == freq2;
+}
+
+int main() {
+    string s1, s2;
+    
+    // Input strings
+    cout << "Enter first string: ";
+    cin >> s1;
+    cout << "Enter second string: ";
+    cin >> s2;
+    
+    // Check if they are anagrams
+    if (areAnagrams(s1, s2)) {
+        cout << "The strings are anagrams of each other." << endl;
+    } else {
+        cout << "The strings are NOT anagrams of each other." << endl;
+    }
+    
+    return 0;
+}
