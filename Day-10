@@ -1,0 +1,12 @@
+class Solution {
+public:
+    string addSpaces(string s, vector<int>& spaces) {
+        int start =0;
+        string result;
+        for(int space: spaces){
+            result+=s.substr(start,space-start)+" ";
+        }
+        result +=s.substr(start);
+        return result;
+    }
+};
