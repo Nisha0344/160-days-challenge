@@ -1,0 +1,30 @@
+class Solution {
+  public:
+    int peakElement(vector<int> &arr) {
+        int n = arr.size();
+        int s = 0;
+        int e = n - 1;
+        
+        while (s <= e) {
+            int mid = s + (e - s) / 2;
+
+            // Check if mid is a peak element
+            if ((mid == 0 || arr[mid] > arr[mid - 1]) && 
+                (mid == n - 1 || arr[mid] > arr[mid + 1])) {
+                return mid;
+            }
+            
+            // Move to the left half if the left neighbor is greater
+            else if (mid > 0 && arr[mid - 1] > arr[mid]) {
+                e = mid - 1;
+            } 
+            
+            // Otherwise, move to the right half
+            else {
+                s = mid + 1;
+            }
+        }
+        
+        return -1; // This case won't occur given the constraints
+    }
+};
