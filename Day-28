@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    int countPairs(vector<int> &arr, int target) {
+        // Code here
+       
+       unordered_map<int ,int> fp;
+       int count =0;
+       for(int num:arr){
+           int comp = target-num;
+           if(fp.find(comp)!=fp.end()){
+               count += fp[comp];
+           }
+           fp[num]++;
+       }
+       return count;
+        
+    }
+};
